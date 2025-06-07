@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你好，欢迎报考岳阳职业技术学院</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            position: relative;
+            color: #333;
+            padding-bottom: 5px; /* 控制下划线距离文字的间距 */
+        }
+        a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px; /* 下划线的高度 */
+            background-color: #ff6347; /* 下划线颜色 */
+            border-radius: 5px; /* 圆角效果 */
+            transform: scaleX(0); /* 初始时隐藏 */
+            transform-origin: bottom right;
+            transition: transform 0.3s ease; /* 过渡效果 */
+        }
+        a:hover::after {
+            transform: scaleX(1); /* 鼠标悬停时显示下划线 */
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="menu">&#9776;</button>
+        <h1>物联网资源分享网站</h1>
+        <nav>
+        <ul>
+            <li><a href="learning path.html"><img src="images/luxian.svg" alt="学习路线" style="width: 15px; height: 12px; margin-right: 8px;">学习路线</a></li>
+            <li><a href="resource sharing.html"><img src="images/ruanjian.svg" alt="软件资源" style="width: 15px; height: 12px; margin-right: 8px;">软件资源</a></li>
+            <li><a href="code.html"><img src="images/daima.svg" alt="代码参考" style="width: 15px; height: 12px; margin-right: 8px;">代码参考</a></li>
+            <li><a href="project.html"><img src="images/xiangmu.svg" alt="项目分享" style="width: 15px; height: 12px; margin-right: 8px;">项目分享</a></li>
+            <li><a href="maintain.html"><img src="images/weihu.svg" alt="维护人员" style="width: 15px; height: 12px; margin-right: 8px;">维护人员</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <main>
+    <section class="news">
+    <div id="text-container" class="typewriter"></div>
+    <script>
+        const text = "你好，欢迎报考物联网应用技术专业！\n愿你在本网站中找到需要的资源以及在编程软件中所遇到的问题的解决方案；\n并且能够学习到一定的知识，将其运用到现实生活中，也希望你能将本网站分享给需要的同学，在此致谢；";
+        let index = 0;
+        let isNewLine = false; // 控制是否换行
+        const specialTextStart = text.indexOf("并且能够学习到一定的知识"); // 这部分文字的开始
+        const specialTextEnd = text.indexOf("在此致谢；") + "在此致谢；".length; // 这部分文字的结束
+
+        function typeWriter() {
+            if (index < text.length) {
+                // 判断是否为换行符
+                if (text.charAt(index) === "\n") {
+                    // 在换行符后插入换行
+                    document.getElementById("text-container").innerHTML += "<br />";
+                    isNewLine = true; // 启动换行后的字体样式
+                } else {
+                    // 判断当前字符是否属于目标文字范围
+                    if (index >= specialTextStart && index < specialTextEnd) {
+                        // 设置这部分文字的字体大小和颜色
+                        document.getElementById("text-container").innerHTML += `<span style="font-size: 24px; color: #ffc343;font-family: 'KaiTi', sans-serif;">${text.charAt(index)}</span>`;
+                    } else {
+                        if (isNewLine) {
+                            // 设置换行后文字的字体大小和颜色
+                            document.getElementById("text-container").innerHTML += `<span style="font-size: 30px; color: #fff1c8;font-family: 'KaiTi', sans-serif;">${text.charAt(index)}</span>`;
+                        }
+                        else {
+                            // 设置换行前文字的字体大小和颜色
+                            document.getElementById("text-container").innerHTML += `<span style="font-size: 45px; color: white;font-family: 'KaiTi', sans-serif;">${text.charAt(index)}</span>`;
+                        }
+                    }
+                }
+
+                index++;
+                setTimeout(typeWriter, 150);  // 150ms 打字速度
+            }
+        }
+
+        window.onload = typeWriter;
+    </script>
+</section>
+</main>
+
+    <footer>
+        <p>Copyright © 2025 岳阳职业技术学院_物联网资源分享 All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

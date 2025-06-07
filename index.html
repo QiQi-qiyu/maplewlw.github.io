@@ -3,103 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>你好，欢迎报考岳阳职业技术学院</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Welcome!</title>
     <style>
-        ul {
-            list-style-type: none;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
             padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            overflow: hidden;
         }
-        li {
-            margin: 10px 0;
-        }
-        a {
-            text-decoration: none;
-            position: relative;
+        .message {
+            text-align: center;
+            font-size: 24px;
             color: #333;
-            padding-bottom: 5px; /* 控制下划线距离文字的间距 */
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
-        a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px; /* 下划线的高度 */
-            background-color: #ff6347; /* 下划线颜色 */
-            border-radius: 5px; /* 圆角效果 */
-            transform: scaleX(0); /* 初始时隐藏 */
-            transform-origin: bottom right;
-            transition: transform 0.3s ease; /* 过渡效果 */
+        #startButton {
+            display: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background: linear-gradient(45deg, #af8bd5, #748bb4);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease, opacity 1s ease-in-out;
+            opacity: 0;  /* 初始透明度为 0 */
         }
-        a:hover::after {
-            transform: scaleX(1); /* 鼠标悬停时显示下划线 */
-            transform-origin: bottom left;
+        #startButton:hover {
+            background: linear-gradient(45deg, #6a99e6, #a55eec);
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        #startButton:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
     </style>
+
 </head>
 <body>
-    <header>
-        <button class="menu">&#9776;</button>
-        <h1>物联网资源分享网站</h1>
-        <nav>
-        <ul>
-            <li><a href="learning path.html"><img src="images/luxian.svg" alt="学习路线" style="width: 15px; height: 12px; margin-right: 8px;">学习路线</a></li>
-            <li><a href="resource sharing.html"><img src="images/ruanjian.svg" alt="软件资源" style="width: 15px; height: 12px; margin-right: 8px;">软件资源</a></li>
-            <li><a href="code.html"><img src="images/daima.svg" alt="代码参考" style="width: 15px; height: 12px; margin-right: 8px;">代码参考</a></li>
-            <li><a href="project.html"><img src="images/xiangmu.svg" alt="项目分享" style="width: 15px; height: 12px; margin-right: 8px;">项目分享</a></li>
-            <li><a href="maintain.html"><img src="images/weihu.svg" alt="维护人员" style="width: 15px; height: 12px; margin-right: 8px;">维护人员</a></li>
-        </ul>
-        </nav>
-    </header>
 
-    <main>
-    <section class="news">
-    <div id="text-container" class="typewriter"></div>
+    <!-- 初始显示的消息 -->
+    <div class="message" id="message1">嗨！同学！</div>
+    <div class="message" id="message2">&nbsp;&nbsp;&nbsp;&nbsp;欢&nbsp;迎&nbsp;来&nbsp;到&nbsp;物&nbsp;联&nbsp;网&nbsp;学&nbsp;习&nbsp;网&nbsp;站&nbsp;！</div>
+    <div class="message" id="message3">&nbsp;&nbsp;&nbsp;&nbsp;这&nbsp;里&nbsp;有&nbsp;你&nbsp;所&nbsp;需&nbsp;要&nbsp;的&nbsp;软&nbsp;件&nbsp;或&nbsp;代&nbsp;码&nbsp;分&nbsp;享；</div>
+
+    <!-- 按钮 -->
+    <button id="startButton" onclick="window.location.href='home.html';">开始你的学习之旅吧！</button>
+
     <script>
-        const text = "你好，欢迎报考物联网应用技术专业！\n愿你在本网站中找到需要的资源以及在编程软件中所遇到的问题的解决方案；\n并且能够学习到一定的知识，将其运用到现实生活中，也希望你能将本网站分享给需要的同学，在此致谢；";
-        let index = 0;
-        let isNewLine = false; // 控制是否换行
-        const specialTextStart = text.indexOf("并且能够学习到一定的知识"); // 这部分文字的开始
-        const specialTextEnd = text.indexOf("在此致谢；") + "在此致谢；".length; // 这部分文字的结束
+        // 显示消息的函数
+        function showMessages() {
+            const messages = [
+                { id: 'message1', delay: 1000 },
+                { id: 'message2', delay: 1200 },
+                { id: 'message3', delay: 1500 }
+            ];
 
-        function typeWriter() {
-            if (index < text.length) {
-                // 判断是否为换行符
-                if (text.charAt(index) === "\n") {
-                    // 在换行符后插入换行
-                    document.getElementById("text-container").innerHTML += "<br />";
-                    isNewLine = true; // 启动换行后的字体样式
-                } else {
-                    // 判断当前字符是否属于目标文字范围
-                    if (index >= specialTextStart && index < specialTextEnd) {
-                        // 设置这部分文字的字体大小和颜色
-                        document.getElementById("text-container").innerHTML += `<span style="font-size: 24px; color: #ffc343;font-family: 'KaiTi', sans-serif;">${text.charAt(index)}</span>`;
-                    } else {
-                        if (isNewLine) {
-                            // 设置换行后文字的字体大小和颜色
-                            document.getElementById("text-container").innerHTML += `<span style="font-size: 30px; color: #fff1c8;font-family: 'KaiTi', sans-serif;">${text.charAt(index)}</span>`;
-                        }
-                        else {
-                            // 设置换行前文字的字体大小和颜色
-                            document.getElementById("text-container").innerHTML += `<span style="font-size: 45px; color: white;font-family: 'KaiTi', sans-serif;">${text.charAt(index)}</span>`;
-                        }
-                    }
-                }
+            let totalDelay = 0;
 
-                index++;
-                setTimeout(typeWriter, 150);  // 150ms 打字速度
-            }
+            messages.forEach(message => {
+                setTimeout(() => {
+                    const element = document.getElementById(message.id);
+                    element.style.display = 'block';
+                    setTimeout(() => {
+                        element.style.opacity = 1;
+                    }, 10);
+                }, totalDelay);
+                totalDelay += message.delay;
+
+                setTimeout(() => {
+                    const element = document.getElementById(message.id);
+                    element.style.opacity = 0;
+                    setTimeout(() => {
+                        element.style.display = 'none';
+                    }, 1000);
+                }, totalDelay);
+                totalDelay += 1000;
+            });
+
+            setTimeout(() => {
+                // 显示按钮，并添加淡入效果
+                const button = document.getElementById('startButton');
+                button.style.display = 'inline-block';
+                setTimeout(() => {
+                    button.style.opacity = 1;
+                }, 10);
+            }, totalDelay); // 设置按钮显示的时间
         }
 
-        window.onload = typeWriter;
+        // 页面加载时执行
+        window.onload = showMessages;
+        
     </script>
-</section>
-</main>
-
-    <footer>
-        <p>Copyright © 2025 岳阳职业技术学院_物联网资源分享 All Rights Reserved.</p>
-    </footer>
 
 </body>
 </html>
