@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>代码分享平台</title>
+  <style>
+    :root {
+      --main-color: #00bcd4;
+      --text-color: #333;
+      --bg-color: #f0f8ff;
+      --hover-bg: #e0f7fa;
+      --white: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background: var(--bg-color);
+      font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+      color: var(--text-color);
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--main-color);
+      margin-bottom: 40px;
+    }
+
+    .category {
+      margin: 20px auto;
+      width: 90%;
+      max-width: 600px;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .category:hover {
+      transform: translateY(-2px);
+    }
+
+    .category-header {
+      padding: 16px 20px;
+      background: var(--main-color);
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.3s;
+    }
+
+    .category-header:hover {
+      background: #00acc1;
+    }
+
+    .category-header::after {
+      content: "▼";
+      font-size: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .category-header.active::after {
+      transform: rotate(-180deg);
+    }
+
+    .category-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      background: #fafafa;
+      padding: 0 20px;
+    }
+
+    .category-content.show {
+      max-height: 300px; /* enough for most links */
+      padding: 10px 20px 20px;
+    }
+
+    .category-content a {
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+      color: #00796b;
+      font-size: 16px;
+      transition: padding-left 0.3s, color 0.3s;
+    }
+
+    .category-content a:hover {
+      padding-left: 10px;
+      color: #004d40;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 22px;
+      }
+
+      .category {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💻 源码共享</h1>
+
+  <div class="category">
+    <div class="category-header" onclick="toggleCategory(this)">技能抽查_51单片机</div>
+    <div class="category-content">
+      <a href="code/51/01.html" target="_blank">1、点亮一个灯</a>
+      <a href="code/51/02.html" target="_blank">2、控制一个灯闪烁</a>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="category-header" onclick="toggleCategory(this)">技能抽查_iocc2530</div>
+    <div class="category-content">
+      <a href="code/cc2530/01.html" target="_blank">1、点亮一个灯</a>
+      <a href="code/cc2530/02.html" target="_blank">2、控制一个灯闪烁</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleCategory(header) {
+      const content = header.nextElementSibling;
+      const isOpen = content.classList.contains('show');
+
+      // 折叠全部
+      document.querySelectorAll('.category-content').forEach(c => c.classList.remove('show'));
+      document.querySelectorAll('.category-header').forEach(h => h.classList.remove('active'));
+
+      // 展开当前（如果原本没打开）
+      if (!isOpen) {
+        content.classList.add('show');
+        header.classList.add('active');
+      }
+    }
+  </script>
+
+</body>
+</html>

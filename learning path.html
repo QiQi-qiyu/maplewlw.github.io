@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>学习路线</title>
+  <style>
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #fce4ec);
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 40px;
+      text-shadow: 1px 1px 2px #aaa;
+    }
+
+    .level {
+      background: #ffffffdd;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .level:hover {
+      transform: scale(1.01);
+    }
+
+    .level-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      padding: 16px 24px;
+      font-size: 20px;
+      background: linear-gradient(to right, #64b5f6, #81c784);
+      color: white;
+    }
+
+    .arrow {
+      transition: transform 0.3s;
+    }
+
+    .links {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out, padding 0.4s;
+      background: #f9f9f9;
+      padding: 0 24px;
+    }
+
+    .links a {
+      display: block;
+      margin: 12px 0;
+      text-decoration: none;
+      color: #1976d2;
+      font-weight: bold;
+    }
+
+    .links a:hover {
+      color: #0d47a1;
+    }
+
+    .level.open .links {
+      max-height: 300px;
+      padding: 12px 24px;
+    }
+
+    .level.open .arrow {
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>物联网历届学生学习路线</h1>
+    <p style="font-family: 'KaiTi', sans-serif; color: black; font-size: 14px; text-align: center;">(别人走过的路能为你减少不必要的麻烦，但是我们还是希望能有自己的学习之路，并将其写成一个故事在下面，加油！OvO)</p>
+
+    <div class="level">
+      <div class="level-title" onclick="toggleLevel(this)">
+        <span>22级</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="links">
+        <a href="student/zhangjin/zhangjin.html" target="_blank">22级学长，张进</a>
+        <a href="#" target="_blank">22级学长，胡鹏</a>
+        <a href="#" target="_blank">22级学长，邱传雄</a>
+      </div>
+    </div>
+
+    <div class="level">
+      <div class="level-title" onclick="toggleLevel(this)">
+        <span>23级</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="links">
+        <a href="#" target="_blank">23级学姐，胡懿冉</a>
+      </div>
+    </div>
+
+    <div class="level">
+      <div class="level-title" onclick="toggleLevel(this)">
+        <span>24级</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="links">
+        <a href="#" target="_blank">24级学长，刘开鑫</a>
+        <a href="#" target="_blank">24级学长，莫俊豪</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleLevel(el) {
+      const level = el.parentElement;
+      level.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>

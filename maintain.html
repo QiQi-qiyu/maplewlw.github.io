@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>网站维护人员</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Microsoft YaHei", sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #fce4ec);
+      color: #333;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    header {
+      background: linear-gradient(to right, #5c6bc0, #7986cb);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      backdrop-filter: blur(8px);
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      border-left: 5px solid #5c6bc0;
+      padding-left: 12px;
+      font-size: 20px;
+      margin-top: 30px;
+    }
+
+    .person-card {
+      display: flex;
+      align-items: flex-start;
+      background: rgba(240, 242, 245, 0.9);
+      border-radius: 12px;
+      padding: 15px;
+      margin: 15px 0;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .person-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      background: rgba(228, 231, 245, 0.95);
+    }
+
+    .avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #ccc;
+      background-size: cover;
+      background-position: center;
+      margin-right: 15px;
+      flex-shrink: 0;
+      transition: transform 0.4s ease;
+    }
+
+    .person-card:hover .avatar {
+      transform: rotate(5deg) scale(1.05);
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .name {
+      font-size: 18px;
+      font-weight: bold;
+      color: #3f51b5;
+    }
+
+    .time {
+      font-size: 14px;
+      color: #777;
+      margin-top: 3px;
+    }
+
+    .desc {
+      font-size: 14px;
+      color: #444;
+      margin-top: 10px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+
+    .person-card.active .desc {
+      max-height: 200px;
+      opacity: 1;
+    }
+
+    @media (max-width: 600px) {
+      .person-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .avatar {
+        margin-bottom: 10px;
+      }
+    }
+        #sakuraCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+    }
+
+  </style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<header>网站维护人员介绍，希望你能够成为下一任"维护者"(历届维护者QQ群：1002889994)</header>
+
+<main>
+  <h2>当前维护人员</h2>
+
+  <div class="person-card" onclick="toggleCard(this)">
+    <div class="avatar" style="background-image: url('maintain/zhangjin/touxiang.jpg');"></div>
+    <div class="info">
+      <div class="name">张进</div>
+      <div class="time">维护时间：2024.06 – 至今</div>
+      <div class="desc">22级毕业生，网站创建者，较擅长系统维护、代码编辑、网络维护等，楚怡杯竞赛中负责物联网应用开发部分；创作网站初衷为分享各类资源，如果在学习上遇到问题，欢迎加入QQ群，前辈们有空会为你解决问题，群内还有很多学习资料；</div>
+    </div>
+  </div>
+
+  <div class="person-card" onclick="toggleCard(this)">
+    <div class="avatar" style="background-image: url('maintain/hupeng/touxiang.jpg');"></div>
+    <div class="info">
+      <div class="name">胡鹏</div>
+      <div class="time">维护时间：2024.06 – 至今</div>
+      <div class="desc">22级毕业生，擅长各类物联网硬件，熟悉设备安装方式等，楚怡杯竞赛中负责物联网硬件开发部分；</div>
+    </div>
+  </div>
+
+  <div class="person-card" onclick="toggleCard(this)">
+    <div class="avatar" style="background-image: url('maintain/qiuchuanxiong/touxiang.jpg');"></div>
+    <div class="info">
+      <div class="name">邱传雄</div>
+      <div class="time">维护时间：2024.06 – 至今</div>
+      <div class="desc">22级毕业生，擅长C语言算法编辑，蓝桥杯C语言组省级一等奖；</div>
+    </div>
+  </div>
+
+  <h2>下届维护人员</h2>
+
+  <div class="person-card" onclick="toggleCard(this)">
+    <div class="avatar" style="background-image: url('maintain/huyiran/touxiang.jpg');"></div>
+    <div class="info">
+      <div class="name">胡懿冉</div>
+      <div class="time">维护时间：2026.06 – 2027.09</div>
+      <div class="desc"></div>
+    </div>
+  </div>
+
+  <h2>历史维护人员</h2>
+
+  <div class="person-card" onclick="toggleCard(this)">
+
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  // 切换卡片展开
+  function toggleCard(card) {
+    card.classList.toggle("active");
+  }
+
+</script>
+
+</body>
+<canvas id="sakuraCanvas"></canvas>
+<script>
+  const canvas = document.getElementById('sakuraCanvas');
+  const ctx = canvas.getContext('2d');
+  let width, height;
+
+  function resizeCanvas() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  const petals = [];
+  const petalImage = new Image();
+  petalImage.src = 'data:image/svg+xml;base64,' + btoa(`
+    <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#f9b9c3" d="M15 0C13 6 6 6 0 10c6 2 6 9 10 11 0 0-1 5 5 5s5-5 5-5c4-2 4-9 10-11-6-4-13-4-15-10z"/>
+    </svg>
+  `);
+
+  for (let i = 0; i < 40; i++) {
+    petals.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      speedY: 1 + Math.random() * 2,
+      speedX: Math.random() * 1 - 0.5,
+      rotation: Math.random() * 360,
+      size: 20 + Math.random() * 10,
+    });
+  }
+
+  function drawPetals() {
+    ctx.clearRect(0, 0, width, height);
+    petals.forEach(p => {
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate((p.rotation * Math.PI) / 180);
+      ctx.drawImage(petalImage, -p.size / 2, -p.size / 2, p.size, p.size);
+      ctx.restore();
+
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.rotation += 0.5;
+
+      if (p.y > height + 20) p.y = -20;
+      if (p.x > width + 20) p.x = -20;
+      if (p.x < -20) p.x = width + 20;
+    });
+    requestAnimationFrame(drawPetals);
+  }
+
+  petalImage.onload = () => {
+    drawPetals();
+  };
+</script>
+
+
+</html>

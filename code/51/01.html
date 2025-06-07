@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>51 点亮一个灯</title>
+  <style>
+    body {
+      background: #f4f4f4;
+      font-family: monospace;
+      padding: 20px;
+    }
+    pre {
+      background: #939393;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 20px;
+      font-family: Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align: center;">51单片机 一个灯闪烁</h2>
+  <pre>
+#include &lt;regx51.h&gt;
+sbit LED=P2^0;
+
+int main()
+{
+	while(1)
+	{
+		LED=0;
+	}
+}
+  </pre>
+</body>
+</html>

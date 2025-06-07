@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>51 点亮一个灯</title>
+  <style>
+    body {
+      background: #f4f4f4;
+      font-family: monospace;
+      padding: 20px;
+    }
+    pre {
+      background: #939393;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 20px;
+      font-family: Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align: center;">51单片机 点亮一个灯</h2>
+  <pre>
+#include &lt;regx51.h&gt;
+sbit LED1=P2^0;
+
+void delay(unsigned int xms)
+{
+	unsigned int i,j;
+	for(i=xms;i>0;i--)
+		for(j=110;j>0;j--);
+}
+
+int main()
+{
+	while(1)
+	{
+		LED1=0;
+		delay(1000);
+		LED1=1;
+		delay(1000);
+	}
+}
+  </pre>
+</body>
+</html>

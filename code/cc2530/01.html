@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>iocc2530 点亮一个灯</title>
+  <style>
+    body {
+      background: #f4f4f4;
+      font-family: monospace;
+      padding: 20px;
+    }
+    pre {
+      background: #939393;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 20px;
+      font-family: Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align: center;">iocc2530 点亮一个灯</h2>
+  <pre>
+#include &lt;iocc2530.h&gt;
+#define LED1 P1_0
+
+void dealy(int ms)
+{
+  int i,j;
+  for(i=ms;i>0;i--)
+    for(j=500;j>0;j--);
+}
+
+void main()
+{
+  P1DIR|=0X01;
+  while(1)
+  {
+     LED1=1;
+      dealy(300);
+     LED1=0;
+       dealy(300);
+  }
+}
+  </pre>
+</body>
+</html>

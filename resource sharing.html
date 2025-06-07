@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --main-color: #4e73df;
+      --card-radius: 16px;
+      --shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #e0f2ff, #f3e5f5);
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: var(--main-color);
+      padding: 16px 32px;
+      text-align: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: var(--shadow);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .category {
+      margin-bottom: 48px;
+    }
+
+    .category-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .category-title::before {
+      content: "📂";
+      font-size: 1.4rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .img-box {
+      background-color: white;
+      border-radius: var(--card-radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 180px;
+      max-height: 180px;
+    }
+
+    .img-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .content {
+      margin-top: 12px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-align: center;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <header>📁 资源分享库（部分资源存放至蓝奏云网盘，请点击普通下载，浏览器则会开始下载）</header>
+
+  <div class="container">
+    
+    <section class="category">
+      <h2 class="category-title">编程类</h2>
+      <div class="grid">
+        <a href="https://wweu.lanzoue.com/b011ld51gf" class="card" target="_blank">
+          <div class="img-box">
+            <img src="resource sharing/image/keil.png" alt="keil_51">
+          </div>
+          <div class="content">keil_51(51单片机)</div>
+          <div class="content">(提取码：7777)</div>
+        </a>
+
+        <a href="https://pan.baidu.com/s/1lKHXmo-pVsVygxTOMKJFBw?pwd=7777 提取码: 7777" class="card" target="_blank">
+          <div class="img-box">
+            <img src="resource sharing/image/keil.png" alt="keil_arm">
+          </div>
+          <div class="content">keil_arm(stm32单片机)</div>
+        </a>
+
+        <a href="https://wweu.lanzoue.com/iTzvn2y83jbi" class="card" target="_blank">
+          <div class="img-box">
+            <img src="resource sharing/image/Dec_C++.png" alt="Python">
+          </div>
+          <div class="content">Dev_C++(C语言编程软件)</div>
+          <div class="content">(提取码：7777)</div>
+        </a>
+
+        <a href="https://www.123912.com/s/hPZOjv-dpYr提取码:7777" class="card" target="_blank">
+          <div class="img-box">
+            <img src="resource sharing/image/vscode.png" alt="Node.js">
+          </div>
+          <div class="content">vscode(微软出品的各类编程语言编辑器)</div>
+          <div class="content">(提取码：7777)</div>
+        </a>
+
+        <a href="https://www.123912.com/s/hPZOjv-3pYr提取码:7777" class="card" target="_blank">
+          <div class="img-box">
+            <img src="resource sharing/image/Pycharm.png" alt="Docker">
+          </div>
+          <div class="content">pycharm(python编辑器)</div>
+          <div class="content">(提取码：7777)</div>
+        </a>
+        <a href="https://pan.baidu.com/s/1_nGGNGxaSwbjO3b8YOAD_Q?pwd=7777 提取码: 7777" class="card" target="_blank">
+          <div class="img-box">
+            <img src="resource sharing/image/stm32cube.png" alt="Docker">
+          </div>
+          <div class="content">stm32cube(HAL库编程)</div>
+        </a>
+        <a href="https://www.123912.com/s/hPZOjv-vpYr提取码:7777" class="card" target="_blank">
+          <div class="img-box">
+            <img src="resource sharing/image/eclipse.png" alt="Docker">
+          </div>
+          <div class="content">eclipse(java编程)</div>
+          <div class="content">(提取码：7777)</div>
+        </a>
+        <a href="https://pan.baidu.com/s/12G5gnSadH6-HsP2By2BIFw?pwd=7777 提取码: 7777" class="card" target="_blank">
+          <div class="img-box">
+            <img src="resource sharing/image/android studio.png" alt="Docker">
+          </div>
+          <div class="content">android studio(android开发)</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="category">
+      <h2 class="category-title">设计类</h2>
+      <div class="grid">
+        <a href="https://wweu.lanzoue.com/iXeZ22y84fkj" class="card" target="_blank">
+          <div class="img-box">
+            <img src="resource sharing/image/axure.png" alt="Figma">
+          </div>
+          <div class="content">axure(绘制2D模型)</div>
+        </a>
+
+        <a href="https://www.123pan.com/s/AYG9-HtVyH.html" class="card" target="_blank">
+          <div class="img-box">
+            <img src="resource sharing/image/photoshop.png" alt="Photoshop">
+          </div>
+          <div class="content">Photoshop(P图软件)</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="category">
+      <h2 class="category-title">虚拟仿真类</h2>
+      <div class="grid">
+        <a href="https://www.123865.com/s/hPZOjv-TpYr提取码:7777" class="card" target="_blank">
+          <div class="img-box">
+            <img src="resource sharing/image/proteus.png" alt="Figma">
+          </div>
+          <div class="content">proteus(电路仿真)</div>
+          <div class="content">提取码：7777</div>
+        </a>
+
+        <a href="https://www.123912.com/s/hPZOjv-hpYr提取码:7777" class="card" target="_blank">
+          <div class="img-box">
+            <img src="resource sharing/image/virtualBox.png" alt="Photoshop">
+          </div>
+          <div class="content">virtualBox(虚拟机)</div>
+          <div class="content">提取码：7777</div>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>

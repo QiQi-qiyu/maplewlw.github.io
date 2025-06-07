@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>物联网2202 张进</title>
+  <link rel="stylesheet" href="zhangjin.css">
+</head>
+
+<body>
+  <div class="shell" id="shell">
+    <div class="header">
+      <h2 class="title">三年的学习历程</h2>
+      <h3 class="subtitle">才正要开始</h3>
+    </div>
+    <div class="timeline">
+    </div>
+  </div>
+
+  <script>
+  const timelineData = [
+    {
+      year: "2022.08",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;第一次离湘西那么远，还有些不适应，看见了岳阳的洞庭湖，比我家附近的荷花塘大多了.",
+      img: "images/zj_backgroud/1.jpg",
+      label: "《初到岳阳》"
+    },
+    {
+      year: "2022.09",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;熟悉了舍友，体验了豪华四人间；上了一个月课，都是文化课，高数听不懂啊~",
+      img: "images/zj_backgroud/2.jpg",
+      label: "《败给高数》"
+    },
+    {
+      year: "2022.10",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;经历一个月了军训的磨练，终于不用晒太阳了，回归正常的上课生活.",
+      img: "images/zj_backgroud/3.jpg",
+      label: "《军训，out》"
+    },
+    {
+      year: "2022.11",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;庆祝双十一到了，自己动手组装了第一台台式电脑，开始自学C语言编程和欣赏第九艺术.",
+      img: "images/zj_backgroud/4.jpg",
+      label: "《机甲！归位！》"
+    },
+    {
+      year: "2022.12",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;参加了信息学院组织的打字比赛，和同学拿了一个二等奖.",
+      img: "images/zj_backgroud/5.jpg",
+      label: "《初现锋芒》"
+    },
+    {
+      year: "2023.03",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;又开学了，依旧还是高数，偏科数学的我沉默了，好在英语比较好，没被罚抄单词.",
+      img: "images/zj_backgroud/6.jpg",
+      label: "《幸灾乐祸》"
+    },
+    {
+      year: "2023.04",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;备考四级中~",
+      img: "images/zj_backgroud/6.jpg",
+      label: "《就差一点！》"
+    },
+    {
+      year: "2023.05",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;不对啊!怎么还有期末考试，桌上的卷子谁给我放的?",
+      img: "images/zj_backgroud/7.jpg",
+      label: "《不是哥们！》"
+    },
+    {
+      year: "2023.06",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;复习期末快速，高数头都大了，不过吾师慈悲，安全通过.",
+      img: "images/zj_backgroud/8.jpg",
+      label: "《大残！》"
+    },
+    {
+      year: "2023.09",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp; 又开学了，开始接触专业课，数据库技术、计算机网络、C语言，我的拿手绝活.",
+      img: "images/zj_backgroud/9.jpg",
+      label: "《easy，收坐骑》"
+    },
+    {
+      year: "2023.10",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;不对劲，电路模拟和电子技术这两门课怎么看不明白？高中知识要牢固~（李灏老师和晓辉老师教的都很好！）",
+      img: "images/zj_backgroud/10.jpg",
+      label: "《在这等着我呢？!》"
+    },
+    {
+      year: "2023.11",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;买了第一块单片机，开始跟着B站的江科大学习51编程，点亮第一个电阻！舒服~",
+      img: "images/zj_backgroud/11.jpg",
+      label: "《正片开始》"
+    },
+    {
+      year: "2023.12",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;终于名正言顺的进入了图书馆511实训室，开始接触新大陆的物联网设备（隔壁512坐着好多人，一问原来是21级前辈）",
+      img: "images/zj_backgroud/12.jpg",
+      label: "《陌生人？！》"
+    },
+    {
+      year: "2024.01",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;跟着彭英老师学习了IAR软件，学会了ziggbe的通信技术，并且发现了面包板的强大之处，解决了很多编程问题.",
+      img: "images/zj_backgroud/13.jpg",
+      label: "《开始发力》"
+    },
+    {
+      year: "2024.03",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;课堂上积极回答老师问题，学习到了很多知识，也认识了很多非常优秀的老师和同学，曾西雅老师上课很负责，很容易理解讲解内容，excellent！！开始和胡鹏准备金砖的比赛.",
+      img: "images/zj_backgroud/14.jpg",
+      label: "《兄弟别坑！》"
+    },
+    {
+      year: "2024.04",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;终于来了吗？stm32f103芯片，我早都想干掉你这个boss了！",
+      img: "images/zj_backgroud/15.jpg",
+      label: "《单杀！》"
+    },
+    {
+      year: "2024.05",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;加入java学习小组，跟着团队和邹沿新老师学到了很多编程的思路，建立了第一个属于自己的贪吃蛇项目.",
+      img: "images/zj_backgroud/16.jpg",
+      label: "《团队之光！》"
+    },
+    {
+      year: "2024.06",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;这次期末快速没怎么复习，很轻松就通过了，专业课果然简单！",
+      img: "images/zj_backgroud/17.jpg",
+      label: "《有点膨胀》"
+    },
+    {
+      year: "2024.09",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;开始在校实习三个月咯，准备省里的技能抽查（轻松躲过）；依旧沉迷用代码点灯中，等等，亮亮的好像不是灯，怎么炸了？！",
+      img: "images/zj_backgroud/18.jpg",
+      label: "《一点意外~》"
+    },
+    {
+      year: "2024.10",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;一步一步爱上嵌入式开发，很喜欢在因为钻研问题而没吃上饭的时候绝杀代码报错的感觉&nbsp;&nbsp;:)",
+      img: "images/zj_backgroud/19.jpg",
+      label: "《一定要要好好吃饭！》"
+    },
+    {
+      year: "2024.11",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;参见第一次省级比赛，因为种种原因，金砖竞赛在线上举办，和搭档胡鹏拿下了华中地区三等奖！",
+      img: "images/zj_backgroud/20.jpg",
+      label: "《第二个省奖（第一个是省标云中君OvO）》"
+    },
+    {
+      year: "2024.12",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;开始实习，赚到了第一份工资！给家里寄了过去，父母说在外面不容易，让我自己留着.",
+      img: "images/zj_backgroud/21.jpg",
+      label: "《有点小钱》"
+    },
+    {
+      year: "2025.02",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;回校参加2025楚怡杯集训，和邱传雄学长一起学习ing~",
+      img: "images/zj_backgroud/22.jpg",
+      label: "《又上早八？！》"
+    },
+    {
+      year: "2025.03",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;队友就位，目标：湖南信息职业技术学院，楚怡杯省二，和胡鹏一起收入囊中！（晚辈加油，把省一奖牌替我们这些前辈拿到岳职！）",
+      img: "images/zj_backgroud/23.jpg",
+      label: "《小小遗憾》"
+    },
+    {
+      year: "2025.04",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;接受挑战杯的挑战，与大家一起完成一个项目.",
+      img: "images/zj_backgroud/24.jpg",
+      label: "《一起加油！》"
+    },
+    {
+      year: "2025.05",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;毕业答辩咯，见到了半年多没见到的同班同学.",
+      img: "images/zj_backgroud/25.jpg",
+      label: "要结束了吗？"
+    },
+    {
+      year: "2025.06",
+      text: "&nbsp;&nbsp;&nbsp;&nbsp;嘿嘿，岳阳再见咯！以后再来玩！",
+      img: "images/zj_backgroud/26.jpg",
+      label: "回家！"
+    },
+  ];
+
+  function createTimeline() {
+    const box = document.querySelector('.timeline');
+    let html = "";
+
+    timelineData.forEach(item => {
+      html += `
+        <div class="item" data-text="${item.label}">
+          <div class="content">
+            <img src="${item.img}" alt="" class="img">
+            <h2 class="content-title">${item.year}</h2>
+            <p class="content-desc">${item.text}</p>
+          </div>
+        </div>
+      `;
+    });
+
+    box.innerHTML = html;
+  }
+
+  createTimeline();
+</script>
+
+  <script src="zhangjin.js"></script>
+
+</body>
+
+</html>

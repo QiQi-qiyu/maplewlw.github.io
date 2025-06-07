@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            overflow: hidden;
+        }
+        .message {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        #startButton {
+            display: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background: linear-gradient(45deg, #af8bd5, #748bb4);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease, opacity 1s ease-in-out;
+            opacity: 0;  /* 初始透明度为 0 */
+        }
+        #startButton:hover {
+            background: linear-gradient(45deg, #6a99e6, #a55eec);
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        #startButton:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- 初始显示的消息 -->
+    <div class="message" id="message1">嗨！同学！</div>
+    <div class="message" id="message2">&nbsp;&nbsp;&nbsp;&nbsp;欢&nbsp;迎&nbsp;来&nbsp;到&nbsp;物&nbsp;联&nbsp;网&nbsp;学&nbsp;习&nbsp;网&nbsp;站&nbsp;！</div>
+    <div class="message" id="message3">&nbsp;&nbsp;&nbsp;&nbsp;这&nbsp;里&nbsp;有&nbsp;你&nbsp;所&nbsp;需&nbsp;要&nbsp;的&nbsp;软&nbsp;件&nbsp;或&nbsp;代&nbsp;码&nbsp;分&nbsp;享；</div>
+
+    <!-- 按钮 -->
+    <button id="startButton" onclick="window.location.href='index.html';">开始你的学习之旅吧！</button>
+
+    <script>
+        // 显示消息的函数
+        function showMessages() {
+            const messages = [
+                { id: 'message1', delay: 1000 },
+                { id: 'message2', delay: 1200 },
+                { id: 'message3', delay: 1500 }
+            ];
+
+            let totalDelay = 0;
+
+            messages.forEach(message => {
+                setTimeout(() => {
+                    const element = document.getElementById(message.id);
+                    element.style.display = 'block';
+                    setTimeout(() => {
+                        element.style.opacity = 1;
+                    }, 10);
+                }, totalDelay);
+                totalDelay += message.delay;
+
+                setTimeout(() => {
+                    const element = document.getElementById(message.id);
+                    element.style.opacity = 0;
+                    setTimeout(() => {
+                        element.style.display = 'none';
+                    }, 1000);
+                }, totalDelay);
+                totalDelay += 1000;
+            });
+
+            setTimeout(() => {
+                // 显示按钮，并添加淡入效果
+                const button = document.getElementById('startButton');
+                button.style.display = 'inline-block';
+                setTimeout(() => {
+                    button.style.opacity = 1;
+                }, 10);
+            }, totalDelay); // 设置按钮显示的时间
+        }
+
+        // 页面加载时执行
+        window.onload = showMessages;
+        
+    </script>
+
+</body>
+</html>
