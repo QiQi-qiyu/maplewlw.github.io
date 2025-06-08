@@ -21,17 +21,35 @@
   </style>
 </head>
 <body>
-  <h2 style="text-align: center;">试题T-2-01 51单片机点亮一个LED灯</h2>
+  <h2 style="text-align: center;">试题T-2-12 51单片机控制LED灯轮流闪3次</h2>
   <pre>
 #include &lt;regx51.h&gt;
-sbit LED=P2^0;
+sbit LED1=P2^0;
+sbit LED2=P2^1;
+
+void delay(unsigned int xms)
+{
+	int i,j;
+	for(i=xms;i>0;i--)
+		for(j=110;j>0;j--);
+}
 
 int main()
 {
-	while(1)
-	{
-		LED=0;
-	}
+	int i;
+	P2=0xff;
+	for(i=0;i<3;i++)
+		{
+			LED1=0;
+			delay(500);
+			LED1=1;
+			delay(500);
+			LED2=0;
+			delay(500);
+			LED2=1;
+			delay(500);
+		}
+	while(1);
 }
   </pre>
 </body>

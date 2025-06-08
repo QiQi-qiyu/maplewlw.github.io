@@ -21,18 +21,52 @@
   </style>
 </head>
 <body>
-  <h2 style="text-align: center;">试题T-2-01 51单片机点亮一个LED灯</h2>
+  <h2 style="text-align: center;">试题T-2-16 51单片机控制LED灯逐次开关</h2>
   <pre>
 #include &lt;regx51.h&gt;
 sbit LED=P2^0;
+sbit LED1=P2^1;
+sbit k1=P1^0;
+
+void delay(int xms)
+{
+	int i,j;
+	for(i=xms;i>0;i--)
+		for(j=110;j>0;j--);
+}
 
 int main()
 {
+	int button=0,state=0;
+	P2=P1=0XFF;
 	while(1)
 	{
-		LED=0;
+		if(k1==0)
+		{
+			delay(20);
+			if(k1==0)
+			{
+				if(!button)
+				{
+					button=1;
+					state=!state;
+				}
+				if(state==1)
+				{
+					LED=0;
+					LED1=1;
+				}
+				else
+				{
+					LED=1;
+					LED1=0;
+				}
+			}
+		}
+		else button=0;
 	}
 }
+
   </pre>
 </body>
 </html>

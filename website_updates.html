@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>网页动态 - 更新日志</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "微软雅黑", sans-serif;
+      background: linear-gradient(120deg, #f0f0f0, #ffffff);
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #4a90e2;
+      color: white;
+    }
+
+    .timeline {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .update {
+      background: #fff;
+      margin: 1rem 0;
+      padding: 1rem;
+      border-left: 4px solid #4a90e2;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .update:hover {
+      transform: scale(1.02);
+    }
+
+    .update h3 {
+      margin: 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .details {
+      margin-top: 0.5rem;
+      display: none;
+      line-height: 1.6;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      padding: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>网页动态 · 更新日志</h1>
+  <p>记录每一次进步 🛠️</p>
+</header>
+
+<section class="timeline">
+    <div class="update">
+    <h3 onclick="toggle(this)">
+      📅 2025-06-08&nbsp;&nbsp;数据注入
+      <span>▶️</span>
+    </h3>
+    <div class="details">
+      <ul>
+        <li>完成"代码参考"子网页的"技能抽查"完整代码；</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="update">
+    <h3 onclick="toggle(this)">
+      📅 2025-06-07&nbsp;&nbsp;网站测试并发布，得到教师支持！
+      <span>▶️</span>
+    </h3>
+    <div class="details">
+      <ul>
+        <li>得到物联网教研室彭英老师支持，将继续开发此网页，为同学分享更多资源；</li>
+        <li>网页托管至github，可在公网访问https://qiqi-qiyu.github.io/maplewlw.github.io/即可跳转本网站；</li>
+        <li>确定第二届主要维护者：物联网23级"维护者"--胡懿冉；</li>
+        <li>确定第三届主要维护者：物联网24级"维护者"--刘开鑫；</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="update">
+    <h3 onclick="toggle(this)">
+      📅 2025-06-06&nbsp;&nbsp;页面结构优化
+      <span>▶️</span>
+    </h3>
+    <div class="details">
+      <ul>
+        <li>完成"学习路线"子网页的&nbsp;张进同学&nbsp;学习之路网页注入；</li>
+        <li>完成"软件资源"子网页的软件下载链接引入，为keil_51、keil_stm32、proteus制作安装教程；</li>
+        <li>完成"代码参考"子网页的部分代码注入；</li>
+        <li>完成"维护人员"子网页的部分"维护者"信息完善；</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="update">
+    <h3 onclick="toggle(this)">
+      📅 2025-06-05&nbsp;&nbsp;初始版本搭建
+      <span>▶️</span>
+    </h3>
+    <div class="details">
+      <ul>
+        <li>网站建立框架完成，各子网页结构搭建完毕，待注入数据；</li>
+        <li>确定第一届主要维护者：物联网22级"维护者"--张进；</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="footer">
+  最后更新：2025-06-08 ｜ 联系方式：QQ:1301711297
+</div>
+
+<script>
+  function toggle(headerEl) {
+    const detailEl = headerEl.nextElementSibling;
+    const arrow = headerEl.querySelector('span');
+    if (detailEl.style.display === "block") {
+      detailEl.style.display = "none";
+      arrow.textContent = "▶️";
+    } else {
+      detailEl.style.display = "block";
+      arrow.textContent = "🔽";
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      background: #f4f4f4;
+      font-family: monospace;
+      padding: 20px;
+    }
+    pre {
+      background: #939393;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 20px;
+      font-family: Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align: center;">试题T-2-15 51单片机控制两个LED灯同时开关</h2>
+  <pre>
+#include &lt;regx51.h&gt;
+sbit LED = P2^0;
+sbit LED1 = P2^1;
+sbit k1 = P1^0;
+
+void delay(int xms) {
+    int i, j;
+    for(i = xms; i > 0; i--)
+        for(j = 110; j > 0; j--);
+}
+
+int main() {
+    unsigned char state = 0;
+    unsigned char button_pressed = 0;  
+    P2 = 0xFF;
+    while(1)
+		{
+			if(k1==0)
+			{
+				delay(20);
+				if(k1==0) 
+				{
+					if(!button_pressed) 
+					{
+						button_pressed = 1;
+						state = !state;
+						if(state) 
+						{
+							LED=0;
+							LED1=0;
+						} 
+						else 
+						{
+							LED=1;
+							LED1=1;
+						}
+					}
+        }
+      } 
+			else 
+			{
+				button_pressed=0;
+			}
+    }
+}
+  </pre>
+</body>
+</html>

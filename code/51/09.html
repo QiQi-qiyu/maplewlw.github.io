@@ -21,16 +21,23 @@
   </style>
 </head>
 <body>
-  <h2 style="text-align: center;">试题T-2-01 51单片机点亮一个LED灯</h2>
+  <h2 style="text-align: center;">试题T-2-09 51单片机点亮一个LED灯同时闪烁</h2>
   <pre>
 #include &lt;regx51.h&gt;
-sbit LED=P2^0;
-
+void delay(int xms)
+{
+	int i,j;
+	for(i=xms;i>0;i--)
+		for(j=110;j>0;j--);
+}
 int main()
 {
 	while(1)
 	{
-		LED=0;
+		P2=0XFF;
+		delay(500);
+		P2=0X00;
+		delay(500);
 	}
 }
   </pre>

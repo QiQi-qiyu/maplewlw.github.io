@@ -75,6 +75,8 @@
       transition: max-height 0.5s ease;
       background: #fafafa;
       padding: 0 20px;
+      max-height: 0px; /* 可以根据需要设置合适的高度 */
+      overflow: auto; /* 允许滚动 */
     }
 
     .category-content.show {
@@ -111,21 +113,45 @@
 
   <h1>💻 源码共享</h1>
 
-  <div class="category">
-    <div class="category-header" onclick="toggleCategory(this)">技能抽查_51单片机</div>
-    <div class="category-content">
-      <a href="code/51/01.html" target="_blank">1、点亮一个灯</a>
-      <a href="code/51/02.html" target="_blank">2、控制一个灯闪烁</a>
-    </div>
-  </div>
-
-  <div class="category">
+    <div class="category">
     <div class="category-header" onclick="toggleCategory(this)">技能抽查_iocc2530</div>
     <div class="category-content">
       <a href="code/cc2530/01.html" target="_blank">1、点亮一个灯</a>
       <a href="code/cc2530/02.html" target="_blank">2、控制一个灯闪烁</a>
     </div>
   </div>
+
+  <div class="category">
+    <div class="category-header" onclick="toggleCategory(this)">技能抽查_51单片机</div>
+    <div class="category-content">
+      <a href="code/51/01.html" target="_blank">试题T-2-01 51单片机点亮一个LED灯</a>
+      <a href="code/51/02.html" target="_blank">试题T-2-02 51单片机控制一个LED 灯闪烁</a>
+      <a href="code/51/03.html" target="_blank">试题T-2-03 51 单片机控制两个 LED 灯同时闪烁</a>
+      <a href="code/51/04.html" target="_blank">试题T-2-04 51 单片机控制两个 LED 灯交替闪烁</a>
+      <a href="code/51/05.html" target="_blank">试题T-2-05 51单片机控制 LED 灯从左至右流水灯闪烁</a>
+      <a href="code/51/06.html" target="_blank">试题T-2-06 51单片机控制 LED 灯从右至左流水灯闪烁</a>
+      <a href="code/51/07.html" target="_blank">试题T-2-07 51单片机控制 LED 灯从中间至两头闪烁</a>
+      <a href="code/51/08.html" target="_blank">试题T-2-08 51单片机控制LED 灯从两头至中间闪烁</a>
+      <a href="code/51/09.html" target="_blank">试题T-2-09 51单片机点亮一个LED灯同时闪烁</a>
+      <a href="code/51/10.html" target="_blank">试题T-2-10 51单片机控制多个LED 灯交替闪烁</a>
+      <a href="code/51/11.html" target="_blank">试题T-2-11 51单片机控制两个LED灯轮流闪3次</a>
+      <a href="code/51/12.html" target="_blank">试题T-2-12 51单片机控制LED灯轮流闪3次</a>
+      <a href="code/51/13.html" target="_blank">试题T-2-13 51单片机控制一个LED灯的开关</a>
+      <a href="code/51/14.html" target="_blank">试题T-2-14 51单片机控制LED灯闪烁</a>
+      <a href="code/51/15.html" target="_blank">试题T-2-15 51单片机控制两个LED灯同时开关</a>
+      <a href="code/51/16.html" target="_blank">试题T-2-16 51单片机控制LED灯逐次开关</a>
+      <a href="code/51/17.html" target="_blank">试题T-2-17 51单片机控制流水灯</a>
+      <a href="code/51/18.html" target="_blank">试题T-2-18 51单片机按键开关控制LED灯从右至左闪烁</a>
+      <a href="code/51/19.html" target="_blank">试题T-2-19 51单片机按键开关控制LED灯从中间至两头闪烁</a>
+      <a href="code/51/20.html" target="_blank">试题T-2-20 51单片机按键开关控制LED灯两侧向中间闪烁</a>
+      <a href="code/51/21.html" target="_blank">试题T-2-21 51单片机按键控制LED灯亮与灭</a>
+      <a href="code/51/22.html" target="_blank">试题T-2-22 51单片机按键控制LED灯的闪烁与熄灭</a>
+      <a href="code/51/23.html" target="_blank">试题T-2-23 51单片机按键控制两个LED灯交替闪烁与熄灭</a>
+      <a href="code/51/24.html" target="_blank">试题T-2-24 51单片机按键控制两个LED灯同时闪烁与熄灭</a>
+    </div>
+  </div>
+
+
 
   <script>
     function toggleCategory(header) {

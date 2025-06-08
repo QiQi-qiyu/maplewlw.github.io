@@ -21,18 +21,48 @@
   </style>
 </head>
 <body>
-  <h2 style="text-align: center;">试题T-2-01 51单片机点亮一个LED灯</h2>
+  <h2 style="text-align: center;">试题T-2-23 51单片机按键控制两个LED灯交替闪烁与熄灭</h2>
   <pre>
 #include &lt;regx51.h&gt;
-sbit LED=P2^0;
+sbit k1=P1^0;
+sbit LED1=P2^0;
+sbit LED2=P2^1;
+
+void delay(int xms)
+{
+	int i,j;
+	for(i=xms;i>0;i--)
+		for(j=110;j>0;j--);
+}
 
 int main()
 {
+	P2=P1=0XFF;
 	while(1)
 	{
-		LED=0;
+		if(k1==0)
+		{
+			while(k1==1)
+			{
+				P2=0XFF;
+			}
+			LED1=0;LED2=1;
+			delay(500);
+			while(k1==1)
+			{
+				P2=0XFF;
+			}
+			LED1=1;LED2=0;
+			delay(500);
+		}
+		else if(k1==1)
+		{
+			P2=0XFF;
+		}
 	}
 }
+	
+
   </pre>
 </body>
 </html>

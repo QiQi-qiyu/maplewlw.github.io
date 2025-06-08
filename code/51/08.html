@@ -21,17 +21,39 @@
   </style>
 </head>
 <body>
-  <h2 style="text-align: center;">试题T-2-01 51单片机点亮一个LED灯</h2>
+  <h2 style="text-align: center;">试题T-2-08 51单片机控制LED 灯从两头至中间闪烁</h2>
   <pre>
 #include &lt;regx51.h&gt;
-sbit LED=P2^0;
+sbit LED1=P2^0;
+sbit LED2=P2^1;
+sbit LED3=P2^2;
+sbit LED4=P2^3;
+sbit LED5=P2^4;
+
+void delay(unsigned int xms)
+{
+	int i,j;
+	for(i=xms;i>0;i--)
+		for(j=110;j>0;j--);
+}
 
 int main()
 {
-	while(1)
-	{
-		LED=0;
-	}
+	P2=0XFF;
+	LED1=LED5=0;
+	delay(500);
+	LED1=LED5=1;
+	delay(500);
+	
+	LED2=LED4=0;
+	delay(500);
+	LED2=LED4=1;
+	delay(500);
+	
+	LED3=0;
+	delay(500);
+	LED3=1;
+	delay(500);
 }
   </pre>
 </body>

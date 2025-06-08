@@ -11,10 +11,10 @@ header {
 h1 {
     color:white;
     position:absolute;
-    left:120px;
+    left:60px;
     top:0;
     line-height: 80px;
-    background-image:url(images/logo.png) ;
+    background-image:url(images/logo.png);
     background-repeat: no-repeat;
     background-position: center;
     width:210px;

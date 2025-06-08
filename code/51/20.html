@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      background: #f4f4f4;
+      font-family: monospace;
+      padding: 20px;
+    }
+    pre {
+      background: #939393;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 20px;
+      font-family: Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align: center;">试题T-2-20 51单片机按键开关控制LED灯两侧向中间闪烁</h2>
+  <pre>
+#include &lt;regx51.h&gt;
+sbit k1=P1^0;
+
+sbit LED1=P2^0; 
+sbit LED2=P2^1;
+sbit LED3=P2^2;
+sbit LED4=P2^3;
+sbit LED5=P2^4;
+
+int t=0;
+
+void two_led();
+void one_led();
+
+void delay(int xms)
+{
+	int i,j;
+	for(i=xms;i>0;i--)
+		for(j=110;j>0;j--);
+}
+
+void key1()
+{
+	if(k1==0)
+	{
+		delay(20);
+		while(k1==0);
+		delay(20);
+		two_led();
+		t=2;
+	}
+}
+
+void key2()
+{
+	if(k1==0)
+	{
+		delay(20);
+		while(k1==0);
+		delay(20);
+		one_led();
+		t=1;
+	}
+}
+
+void one_led()
+{
+	LED3=0;
+	delay(500);
+	LED3=1;
+	delay(500);
+	key1();
+	
+	LED2=LED4=0;
+	delay(500);
+	LED2=LED4=1;
+	delay(500);
+	key1();
+	
+	LED1=LED5=0;
+	delay(500);
+	LED1=LED5=1;
+	delay(500);
+	key1();
+}
+
+void two_led()
+{
+	LED1=LED5=0;
+	delay(500);
+	LED1=LED5=1;
+	delay(500);
+	key2();
+	
+	LED2=LED4=0;
+	delay(500);
+	LED2=LED4=1;
+	delay(500);
+	key2();
+	
+	LED3=0;
+	delay(500);
+	LED3=1;
+	delay(500);
+	key2();
+}
+
+int main()
+{
+	P2=P1=0XFF;
+	while(1)
+	{
+		if(k1==0)
+		{
+			delay(20);
+			while(k1==0);
+			delay(20);
+			t=1;
+		}
+		if(t==1)
+		{
+			while(t==1)
+			{
+				one_led();
+			}
+		}
+		if(t==2)
+		{
+			while(t==2)
+			{
+				two_led();
+			}
+			
+		}
+	}
+}
+  </pre>
+</body>
+</html>

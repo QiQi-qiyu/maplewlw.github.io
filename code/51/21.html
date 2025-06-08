@@ -21,16 +21,25 @@
   </style>
 </head>
 <body>
-  <h2 style="text-align: center;">试题T-2-01 51单片机点亮一个LED灯</h2>
+  <h2 style="text-align: center;">试题T-2-21 51单片机按键控制LED灯亮与灭</h2>
   <pre>
 #include &lt;regx51.h&gt;
+sbit k1=P1^0;
 sbit LED=P2^0;
 
 int main()
 {
+	P2=P1=0XFF;
 	while(1)
 	{
-		LED=0;
+		if(k1==0)
+		{
+			LED=0;
+		}
+		else if(k1==1)
+		{
+			LED=1;
+		}
 	}
 }
   </pre>

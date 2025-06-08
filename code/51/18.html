@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      background: #f4f4f4;
+      font-family: monospace;
+      padding: 20px;
+    }
+    pre {
+      background: #939393;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 20px;
+      font-family: Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align: center;">试题T-2-18 51单片机按键开关控制LED灯从右至左闪烁</h2>
+  <pre>
+#include &lt;regx51.h&gt;
+sbit k1=P1^0;
+
+int a[5]={0xFE,0XFD,0XFB,0XF7,0XEF};
+
+void delay(int xms)
+{
+	int i,j;
+	for(i=xms;i>0;i--)
+		for(j=110;j>0;j--);
+}
+
+int main()
+{
+	int t=0,index=0,temp=4;
+	P2=P1=0XFF;
+	while(1)
+	{
+		if(k1==0)
+		{
+			delay(20);
+			while(k1==0);
+			delay(20);
+			t++;
+		}
+		if(t==1)
+		{
+			while(t==1)
+			{
+				P2=a[index];
+				delay(500);
+				index=(index+1)%5;
+				if(k1==0)
+				{
+					delay(20);
+					while(k1==0);
+					delay(20);
+					P2=a[4];
+					t++;
+				}
+			}
+		}
+		else if(t==2)
+		{
+			P2=a[temp];
+			delay(500);
+			temp=(temp-1)/1;
+			if(temp==-1)
+			{
+				temp=4;
+			}
+			if(k1==0)
+			{
+				delay(20);
+				while(k1==0);
+				delay(20);
+				P2=a[0];
+				t--;
+			}
+		}
+	}
+}
+  </pre>
+</body>
+</html>
