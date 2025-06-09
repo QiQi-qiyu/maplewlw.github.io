@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      background: #f4f4f4;
+      font-family: monospace;
+      padding: 20px;
+    }
+    pre {
+      background: #939393;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 20px;
+      font-family: Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align: center;">试题T-1-18 按键开关控制LED灯从两头至中间闪烁</h2>
+  <pre>
+#include &lt;iocc2530.h&gt;
+#define LED1 P1_1
+#define LED2 P1_0
+#define LED3 P1_4
+#define LED4 P1_3
+#define SW P1_2
+int state=0;
+
+void delay(int xms)
+{
+  int i,j;
+  for(i=xms;i>0;i--)
+     for(j=110;j>0;j--);
+}
+
+int main()
+{
+  P1DIR|=0x1B;
+  P1DIR&=~0x04;
+  LED1=LED2=LED3=LED4=0;
+  while(1)
+  {
+    if(SW==0)
+    {
+      delay(20);
+      while(SW==0);
+      delay(20);
+      state++;
+    }
+    if(state==1)
+    {
+      LED1=LED4=1;
+      delay(1000);
+     LED1=LED4=0;
+      delay(1000);
+      
+     LED2=LED3=1;
+      delay(1000);
+     LED2=LED3=0;
+      delay(1000);
+    }
+  }
+}
+  </pre>
+</body>
+</html>

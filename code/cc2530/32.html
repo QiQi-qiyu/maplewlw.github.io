@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      background: #f4f4f4;
+      font-family: monospace;
+      padding: 20px;
+    }
+    pre {
+      background: #939393;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 20px;
+      font-family: Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align: center;">试题T-1-32	按键开关控制LED灯跑马灯模拟十六进制数据表示</h2>
+  <pre>
+#include &lt;iocc2530.h&gt;
+#define LED1 P1_1
+#define LED2 P1_0
+#define LED3 P1_4
+#define LED4 P1_3
+
+void dealy(int ms)
+{
+  int i,j;
+  for(i=ms;i>0;i--)
+    for(j=500;j>0;j--);
+}
+
+void main()
+{
+  
+  P1DIR|=0X1B; //打开p1到p4
+  
+  while(1)
+  {
+   //0
+   P1=0x00;  
+   dealy(500);
+   //1
+   LED1=1;
+   LED2=LED3=LED4=0;
+   dealy(500);
+   //2
+   LED2=1;
+   LED1=LED3=LED4=0;
+   dealy(500);
+   //3
+   LED1=LED2=1;
+   LED3=LED4=0;
+   dealy(500);
+   //4
+   LED3=1;
+   LED1=LED2=LED4=0;
+   dealy(500);
+   
+   //5
+   LED1=LED3=1;
+   LED2=LED4=0;
+   dealy(500);
+   
+   //6
+   LED2=LED3=1;
+   LED1=LED4=0;
+   dealy(500);
+   
+   //7
+   LED1=LED2=LED3=1;
+   LED4=0;
+   dealy(500);
+   
+   //8
+   LED4=1;
+   LED1=LED2=LED3=0;
+   dealy(500);
+   
+   //9
+   LED4=LED1=1;
+   LED2=LED3=0;
+   dealy(500);
+   
+   //10
+   LED4=LED2=1;
+   LED1=LED3=0;
+   dealy(500);
+   
+   //11
+   LED4=LED2=LED1=1;
+   LED3=0;
+   dealy(500);
+   
+   //12
+   LED4=LED3=1;
+   LED1=LED2=0;
+   dealy(500);
+   
+   //13
+   LED4=LED3=LED1=1;
+   LED2=0;
+   dealy(500);
+   
+   //14
+   LED4=LED3=LED2=1;
+   LED1=0;
+   dealy(500);
+   
+   //15
+   LED4=LED3=LED2=LED1=1;
+   dealy(500);
+  }
+}
+  </pre>
+</body>
+</html>

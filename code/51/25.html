@@ -21,29 +21,26 @@
   </style>
 </head>
 <body>
-  <h2 style="text-align: center;">试题T-1-02 CC2530程序控制LED2灯闪烁</h2>
+  <h2 style="text-align: center;">试题T-2-25 51单片机实现两个按键同时按下控制LED灯亮灭</h2>
   <pre>
-#include &lt;iocc2530.h&gt;
-#define LED2 P1_1
+#include &lt;regx51.h&gt;
+sbit k1=P1^0;
+sbit k2=P1^1;
+sbit LED=P2^0;
 
-void dealy(int ms)
+int main()
 {
-  int i,j;
-  for(i=ms;i>0;i--)
-    for(j=500;j>0;j--);
+	while(1)
+	{
+		if(k1==0&&k2==0)
+		{
+			LED=0;
+		}
+		else LED=1;
+	}
 }
 
-void main()
-{
-  P1DIR|=0X02;
-  while(1)
-  {
-     LED2=1;
-     dealy(300);
-     LED2=0;
-     dealy(300);
-  }
-}
+
   </pre>
 </body>
 </html>

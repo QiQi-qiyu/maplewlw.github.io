@@ -21,27 +21,32 @@
   </style>
 </head>
 <body>
-  <h2 style="text-align: center;">试题T-1-02 CC2530程序控制LED2灯闪烁</h2>
+  <h2 style="text-align: center;">试题 T-1-19 按键按下时LED1亮，松开时LED1灯灭</h2>
   <pre>
 #include &lt;iocc2530.h&gt;
-#define LED2 P1_1
+#define LED1 P1_1
+#define SW P1_2
+int state=0;
 
-void dealy(int ms)
+void delay(int xms)
 {
   int i,j;
-  for(i=ms;i>0;i--)
-    for(j=500;j>0;j--);
+  for(i=xms;i>0;i--)
+     for(j=110;j>0;j--);
 }
 
-void main()
+int main()
 {
-  P1DIR|=0X02;
+  P1DIR|=0x02;
+  P1DIR&=~0x04;
+  LED1=0;
   while(1)
   {
-     LED2=1;
-     dealy(300);
-     LED2=0;
-     dealy(300);
+    if(SW==0)
+    {
+     LED1=1;
+    }
+    else LED1=0;
   }
 }
   </pre>

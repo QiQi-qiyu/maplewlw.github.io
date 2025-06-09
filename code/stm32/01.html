@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      background: #f4f4f4;
+      font-family: monospace;
+      padding: 20px;
+    }
+    pre {
+      background: #939393;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 20px;
+      font-family: Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align: center;">嵌入式模块</h2>
+  <p style="text-align: center;">因该模块可用一个代码实现全部功能，为了方便同学记忆，故采用该方法；</p>
+  <p style="text-align: center;">注意：连线方式为：PC6连接需要亮灯的数码管，数码管的abcdefg引脚则连接至PA端口</p>
+  <pre>
+#include &lt;stm32f10x.h&gt;
+unsigned int a[]={
+0X00FFFFFF,//0
+0X00000FF0,//1
+0X0F0FF0FF,//2
+0X0F00FFFF,//3
+0X0FF00FF0,//4
+0X0FF0FF0F,//5
+0X0FFFFF0F,//6
+0X00000FFF,//7
+0X0FFFFFFF,//8
+0X0FF0FFFF//9
+};
+//假设你需要让数码管显示'2'，则在主函数使用：GPIOA->CRL = a[2];，<br>同理，你想显示'3',则使用：GPIOA->CRL = a[3];
+
+
+void delay(u16 time)
+{
+    u16 i=0;
+    while(time--)
+    {
+        i=12000;
+        while(i--);
+    }
+}
+
+void key()
+{
+    GPIOC->CRL&=0XF0FF FFFF; // PC6
+    GPIOC->CRL|=0X0300 0000;
+
+//    GPIOC->CRL&=0X0FFFFFFF; // PC13
+//    GPIOC->CRL|=0X30000000;
+
+    GPIOC->CRH&=0XFF0FFFFF; // 配置 PC15-PC8
+    GPIOC->CRH|=0X00400000;
+
+    GPIOD->CRH&=0XFF0FFFFF; // 配置 PD7-PD0
+    GPIOD->CRH|=0X00400000;
+}
+
+int main(void)
+{
+    RCC->APB2ENR|=1<<2; // 启用 GPIOA 时钟
+    RCC->APB2ENR|=1<<4; // 启用 GPIOC 时钟
+    RCC->APB2ENR|=1<<5; // 启用 GPIOD 时钟
+    GPIOC->BSRR = 0XFFFFFFFF;
+    unsigned int d=0,i;
+    key();
+
+    while(1)
+    {
+        if(~GPIOD->IDR & 1<<13) // 检测按键是否按下，如果不需要按键，可去掉这个if语句；
+        {
+            delay(200);
+            GPIOA->CRL = a[d]; // 显示对应数字
+            d = (d + 1) % 10; // 切换下一个数字
+        }
+    }
+}
+  </pre>
+</body>
+</html>

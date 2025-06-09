@@ -21,10 +21,12 @@
   </style>
 </head>
 <body>
-  <h2 style="text-align: center;">试题T-1-02 CC2530程序控制LED2灯闪烁</h2>
+  <h2 style="text-align: center;">试题T-1-30 按键开关控制LED灯跑马灯模拟八进制数据表示</h2>
   <pre>
 #include &lt;iocc2530.h&gt;
-#define LED2 P1_1
+#define LED1 P1_1
+#define LED2 P1_0
+#define LED3 P1_4
 
 void dealy(int ms)
 {
@@ -35,13 +37,44 @@ void dealy(int ms)
 
 void main()
 {
-  P1DIR|=0X02;
+  
+  P1DIR|=0X1B; //打开p1到p4
+  
   while(1)
   {
-     LED2=1;
-     dealy(300);
-     LED2=0;
-     dealy(300);
+   //0
+   P1=0x00;  
+   dealy(500);
+   //1
+   LED1=1;
+   LED2=LED3=0;
+   dealy(500);
+   //2
+   LED2=1;
+   LED1=LED3=0;
+   dealy(500);
+   //3
+   LED1=LED2=1;
+   LED3=0;
+   dealy(500);
+   //4
+   LED3=1;
+   LED1=LED2=0;
+   dealy(500);
+   
+   //5
+   LED1=LED3=1;
+   LED2=0;
+   dealy(500);
+   
+   //6
+   LED2=LED3=1;
+   LED1=0;
+   dealy(500);
+   
+   //7
+   LED1=LED2=LED3=1;
+   dealy(500);
   }
 }
   </pre>

@@ -21,10 +21,13 @@
   </style>
 </head>
 <body>
-  <h2 style="text-align: center;">试题T-1-02 CC2530程序控制LED2灯闪烁</h2>
+  <h2 style="text-align: center;">试题T-1-05 CC2530程序控制LED灯从左至右流水灯闪烁</h2>
   <pre>
 #include &lt;iocc2530.h&gt;
+#define LED1 P1_0
 #define LED2 P1_1
+#define LED3 P1_3
+#define LED4 P1_4
 
 void dealy(int ms)
 {
@@ -35,13 +38,26 @@ void dealy(int ms)
 
 void main()
 {
-  P1DIR|=0X02;
+  
+  P1DIR|=0X1B; //打开p1到p4
+  
   while(1)
   {
-     LED2=1;
-     dealy(300);
-     LED2=0;
-     dealy(300);
+   LED4=1; ////从左至右
+   LED1=LED2=LED3=0;
+   dealy(300);
+   
+   LED3=1;
+   LED1=LED2=LED4=0;
+   dealy(300);
+   
+   LED2=1;
+   LED1=LED3=LED4=0;
+   dealy(300);
+   
+   LED1=1;
+   LED2=LED3=LED4=0;
+   dealy(300);
   }
 }
   </pre>

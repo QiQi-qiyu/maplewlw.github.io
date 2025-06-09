@@ -21,29 +21,35 @@
   </style>
 </head>
 <body>
-  <h2 style="text-align: center;">试题T-1-02 CC2530程序控制LED2灯闪烁</h2>
+  <h2 style="text-align: center;">试题T-2-28 51单片机实现不同按键控制一个LED状态</h2>
   <pre>
-#include &lt;iocc2530.h&gt;
-#define LED2 P1_1
+#include &lt;regx51.h&gt;
+sbit LED=P2^0;
+sbit SW1=P2^1;
 
-void dealy(int ms)
+void delay(int ms)
 {
-  int i,j;
-  for(i=ms;i>0;i--)
-    for(j=500;j>0;j--);
+	int i,j;
+	for(i=ms;i>0;i--)
+		for(j=110;j>0;j--);
 }
 
 void main()
 {
-  P1DIR|=0X02;
-  while(1)
-  {
-     LED2=1;
-     dealy(300);
-     LED2=0;
-     dealy(300);
-  }
+	while(1)
+	{
+		if(SW1==0)
+		{
+			P2=0XFE;
+			delay(300);
+		}else{
+			P2=0XFF;
+			delay(300);
+		}
+	}
 }
+
+
   </pre>
 </body>
 </html>

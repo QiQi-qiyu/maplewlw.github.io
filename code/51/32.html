@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      background: #f4f4f4;
+      font-family: monospace;
+      padding: 20px;
+    }
+    pre {
+      background: #939393;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 20px;
+      font-family: Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align: center;">试题T-2-32 51单片机实现按键控制LED灯显示二进制</h2>
+  <pre>
+#include &lt;regx51.h&gt;
+sbit LED1=P2^0;
+sbit LED2=P2^1;
+sbit LED3=P2^2;
+sbit LED4=P2^3;
+sbit LED5=P2^4;
+sbit LED6=P2^5;
+sbit LED7=P2^6;
+sbit LED8=P2^7;
+sbit SW1=P3^0;
+
+void delay(int ms)
+{
+	int i,j;
+	for(i=ms;i>0;i--)
+		for(j=110;j>0;j--);
+}
+
+void main()
+{
+	int a=250,i,c;
+	int b[8];
+	while(1)
+	{
+		if(SW1==0)
+		{
+			a++;
+			if(a == 256) //判断是否是2的第9位
+				a = 0; 		//清零
+			delay(300);
+		}	
+		c = a ;
+		for(i = 0; i<8 ; i++)  //遍历0到7
+		{
+			b[i] = c%2 ;				
+			c = c/2 ;
+			b[i] =! b[i]; 			//取反
+			switch(i)
+			{
+				case 0 : LED1 = b[i];break;
+				case 1 : LED2 = b[i];break;
+				case 2 : LED3 = b[i];break;
+				case 3 : LED4 = b[i];break;
+				case 4 : LED5 = b[i];break;
+				case 5 : LED6 = b[i];break;
+				case 6 : LED7 = b[i];break;
+				case 7 : LED8 = b[i];break;
+			}
+		}
+		
+	}
+}
+	
+
+
+
+
+  </pre>
+</body>
+</html>

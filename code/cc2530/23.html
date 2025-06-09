@@ -21,12 +21,13 @@
   </style>
 </head>
 <body>
-  <h2 style="text-align: center;">试题T-1-02 CC2530程序控制LED2灯闪烁</h2>
+  <h2 style="text-align: center;">试题T-1-23 按键按下时控制LED灯从左至右闪烁，松开时停止</h2>
   <pre>
 #include &lt;iocc2530.h&gt;
-#define LED2 P1_1
+#define SW P1_2
 
-void dealy(int ms)
+unsigned char Led_Left[]={0x08,0x10,0x01,0x02};
+void delay(int ms)
 {
   int i,j;
   for(i=ms;i>0;i--)
@@ -35,13 +36,28 @@ void dealy(int ms)
 
 void main()
 {
-  P1DIR|=0X02;
+  int i;
+  P1DIR |=0X1b;
+  P1DIR &=  ~0X04;
+  P1=0X00;
   while(1)
   {
-     LED2=1;
-     dealy(300);
-     LED2=0;
-     dealy(300);
+    if(SW==0)
+    {
+      delay(10);
+        if(SW==0)
+        {
+          for(i=0;i<4;i++)
+          {
+            P1=Led_Left[i];
+            delay(300);
+             P1=0X00;
+          }
+        }else
+        {
+          P1=0X00;
+        }
+    }
   }
 }
   </pre>
